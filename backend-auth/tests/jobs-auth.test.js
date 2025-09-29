@@ -6,26 +6,26 @@ const Job = require("../models/jobModel");
 const User = require("../models/userModel");
 
 const jobs = [
-    {
-        title: "Software Engineer",
-        type: "Full-time",
-        description: "Build and maintain backend services.",
-        company: {
-            name: "Helsinki Tech",
-            contactEmail: "hr@helsinkitech.fi",
-            contactPhone: "1234567890",
-        },
+  {
+    title: "Software Engineer",
+    type: "Full-time",
+    description: "Build and maintain backend services.",
+    company: {
+      name: "Helsinki Tech",
+      contactEmail: "hr@helsinkitech.fi",
+      contactPhone: "1234567890",
     },
-    {
-        title: "Frontend Developer",
-        type: "Contract",
-        description: "Develop UI components and improve UX.",
-        company: {
-            name: "Nordic Web",
-            contactEmail: "jobs@nordicweb.fi",
-            contactPhone: "0987654321",
-        },
+  },
+  {
+    title: "Frontend Developer",
+    type: "Contract",
+    description: "Develop UI components and improve UX.",
+    company: {
+      name: "Nordic Web",
+      contactEmail: "jobs@nordicweb.fi",
+      contactPhone: "0987654321",
     },
+  },
 ];
 
 let token = null;
@@ -69,14 +69,14 @@ describe("Given there are initially some jobs saved", () => {
 
   it("should create one job when POST /api/jobs is called", async () => {
     const newJob = {
-        title: "Software Engineer",
-        type: "Full-time",
-        description: "Build and maintain backend services.",
-        company: {
-            name: "Helsinki Tech",
-            contactEmail: "hr@helsinkitech.fi",
-            contactPhone: "1234567890",
-        },
+      title: "Software Engineer",
+      type: "Full-time",
+      description: "Build and maintain backend services.",
+      company: {
+        name: "Helsinki Tech",
+        contactEmail: "hr@helsinkitech.fi",
+        contactPhone: "1234567890",
+      },
     };
     await api
       .post("/api/jobs")
@@ -106,16 +106,16 @@ describe("Given there are initially some jobs saved", () => {
       .send(updatedJob)
       .expect(200)
       .expect("Content-Type", /application\/json/);
-  
+
     console.log("Response body:", response.body);
-  
+
     const updatedJobCheck = await Job.findById(job._id);
     console.log("Updated job:", updatedJobCheck);
-  
-    expect(updatedJobCheck.info).toBe(updatedJob.info);
-    expect(updatedJobCheck.price).toBe(updatedJob.price);
+
+    expect(updatedJobCheck.title).toBe(updatedJob.title);
+    expect(updatedJobCheck.type).toBe(updatedJob.type);
   });
-  
+
 
   it("should delete one job by ID when DELETE /api/jobs/:id is called", async () => {
     const job = await Job.findOne();
