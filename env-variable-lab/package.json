@@ -1,0 +1,21 @@
+{
+  "name": "env-variable-lab",
+  "version": "1.0.0",
+  "description": "",
+  "license": "MIT",
+  "author": "Lev Karavanov",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "start": "cross-env  NODE_ENV=production node index.js",
+    "dev": "cross-env NODE_ENV=development node index.js",
+    "test": "cross-env NODE_ENV=test node index.js"
+  },
+  "dependencies": {
+    "dotenv": "^17.2.2"
+  },
+  "devDependencies": {
+    "cross-env": "^10.0.0",
+    "nodemon": "^3.1.10"
+  }
+}

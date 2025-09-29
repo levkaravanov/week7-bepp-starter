@@ -1,3 +1,6 @@
 node_modules/
 .env
 .DS_Store
+bepp.md
+bepp-summary.md
+bepp-extra.md
